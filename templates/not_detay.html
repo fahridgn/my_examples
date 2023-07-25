@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+    <div class="card mt-2 w-75 mx-auto">
+        <div class="card-header">
+            <h4 class="card-text">{{object.baslik}}</h4>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{object.icerik}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="{% url 'not_duzenle' notlar.pk %}" class="btn btn-secondary px-5"> Düzenle </a>
+            <a href="{% url 'not_sil' notlar.pk %}" class="btn btn-secondary px-5"> Sil </a>
+        </div>
+    </div>
+{% endblock content %}
+
+
+

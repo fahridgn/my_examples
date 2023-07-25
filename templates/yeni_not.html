@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!--   <h1> Not Ekle </h1>
+        <form action="" method="post"> {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Kaydet"/>
+        </form>
+-->
+    <h1 class="d-flex justify-content-center">Yeni Not</h1>
+    <form class="w-50 position-absolute top-50 start-50 translate-middle" action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-secondary ml-2 mt-2" type="submit">Kaydet</button>
+    </form>
+
+{% endblock content %}

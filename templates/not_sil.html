@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 text-center">
+            <h3 class="d-flex justify-content-center"> Not Silme İşlemi <h3>
+            <form active="" method="post"> {% csrf_token %}
+            <h4 class="d-flex justify-content-center"> "{{notlar.baslik}}"</h4> <h5>Bu notu silmek istediğinizden emin misiniz?</h5> 
+            <input class="btn btn-secondary btn-md center-block px-5" type="submit" value="Onayla"/>
+    </div>
+</div>
+{% endblock content %}

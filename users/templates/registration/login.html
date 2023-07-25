@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Giriş {% endblock title %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+<div class="container w-25 p-3">
+<h2>Log in</h2>
+<form method='post'>
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-info btn-lg btn-block mt-3" type="submit">Giriş</button>
+</form>
+</div>
+</div>
+
+{% endblock content %}

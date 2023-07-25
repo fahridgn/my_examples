@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- Zorunlu meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, 
+initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}">
+{% block title %}Articles{% endblock title %}
+{% block content %}
+	{% for article in object_list %}
+		<div class="card">
+			<div class="card-header">
+				<span class="font-weight-bold">{{ article.title }}</span> &middot;
+				<span class="text-muted"> {{ article.author }} tarafından yazıldı |
+				{{ article.date }}</span>
+			</div>
+			<div class="card-body">
+				<p>{{ article.body }}</p>
+				<!-- Değişiklik buradan başlıyor -->
+				<a href="{% url 'article_edit' article.pk %}" class="btn btn-secondary">Düzenle</a> 
+				<a href="{% url 'article_delete' article.pk %}" class="btn btn-secondary">Sil</a>
+			</div>
+			<div class="card-footer">
+				{% for comment in article.comments.all %}
+					<p>
+						<span class="font-weight-bold">{{ comment.author }} &middot; </span>
+						{{ comment }}
+					</p>
+				{% endfor %}
+			</div>
+		</div>
+	<br/>
+	{% endfor %}
+{% endblock content %}
+
+<script src="{% static 'js/jquery-min.js' %}"></script>
+<script src = "{% static 'js/bootstrap.min.js' %}"></script>

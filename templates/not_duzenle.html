@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1 class="d-flex justify-content-center">Not İçeriği Düzenle</h1>
+    <form class="w-50 position-absolute top-50 start-50 translate-middle" action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-secondary ml-2 mt-2" type="submit">Kaydet</button>
+    </form>
+{% endblock content %}  
