@@ -5,16 +5,19 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-    {% for notlari_listele in object_list %}
+    {% for notlar in object_list %}
         <div class="card mt-3 w-75 mx-auto" style="background-color: #ECECEC;">
             <div class="card-header">
-                <a href='{% url "not_detay" notlarim.pk%}' class="btn btn-secondary">{{notlarimview.baslik}}</a>
+                <a href='{% url "not_detay" notlar.pk%}' class="btn btn-secondary">{{notlar.baslik}}</a>
             </div>
             <div class="card-body">
-            <p class="card-text">{{notlarimview.icerik}}</p>
+            <p class="card-text">{{notlar.icerik}}</p>
+            </div>
+            <div class="card-footer">
+                <p class="card-text">{{notlar.yazar}} | Tarafından paylaşıldı. - Ekleme Tarihi | {{notlar.date}}</p>
             </div>
         </div>
 
     {% endfor%}
 
-{% endblock content %}
+{% endblock content %} 
