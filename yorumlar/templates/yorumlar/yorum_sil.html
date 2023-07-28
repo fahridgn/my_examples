@@ -1,0 +1,13 @@
+<!-- templates/yorumlar/yorum_sil.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Yorum Sil</h1>
+  <p>Yorumu silmek istediğinizden emin misiniz?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sil</button>
+  </form>
+  <a href="{% url 'yorum_list' not_id=not_id %}">Geri</a>
+{% endblock %}

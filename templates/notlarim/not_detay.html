@@ -13,10 +13,16 @@
             <p class="card-text">{{object.icerik}}</p>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <a href="{% url 'not_duzenle' notlar.pk %}" class="btn btn-secondary px-5"> Düzenle </a>
-            <a href="{% url 'not_sil' notlar.pk %}" class="btn btn-secondary px-5"> Sil </a>
+            <a href="{% url 'not_guncelle' not.pk %}" class="btn btn-secondary px-5"> Düzenle </a>
+            <a href="{% url 'not_sil' not.pk %}" class="btn btn-secondary px-5"> Sil </a>
         </div>
     </div>
+    <h2>Yorumlar:</h2>
+<ul>
+    {% for yorum in yorumlar %}
+        <li>{{ yorum.icerik }}</li>
+    {% endfor %}
+</ul>
 {% endblock content %}
 
 

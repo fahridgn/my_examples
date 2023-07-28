@@ -8,7 +8,7 @@
     {% for notlar in object_list %}
         <div class="card mt-3 w-75 mx-auto" style="background-color: #ECECEC;">
             <div class="card-header">
-                <a href='{% url "not_detay" notlar.pk%}' class="btn btn-secondary">{{notlar.baslik}}</a>
+                <a href="{% url 'not_detay' notlar.pk%}" class="btn btn-secondary">{{notlar.baslik}}</a>
             </div>
             <div class="card-body">
             <p class="card-text">{{notlar.icerik}}</p>

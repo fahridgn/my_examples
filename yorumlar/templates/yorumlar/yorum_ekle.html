@@ -1,0 +1,13 @@
+<!-- templates/yorumlar/yorum_ekle.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Yorum Ekle</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Kaydet</button>
+  </form>
+  <a href="{% url 'yorum_list' not_id=not_id %}">Geri</a>
+{% endblock %}

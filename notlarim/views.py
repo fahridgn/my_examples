@@ -1,32 +1,37 @@
-from django.shortcuts import render
-from django.views import generic
-from .models import Notlar
+# notlarim/views.py
+
 from django.urls import reverse_lazy
-from django.forms import Form
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth import get_user_model
+from .models import Notlar
 
-
-class NotlarimView(generic.ListView):
-    model= Notlar
-    form= Form
-    template_name='notlari_listele.html'
-
-
-class NotDetay(generic.DetailView):
-    model=Notlar
-    template_name='not_detay.html'
-
-
-class YeniNot(generic.edit.CreateView):
+class NotlarListView(ListView):
     model = Notlar
-    template_name='yeni_not.html'
-    fields = '__all__'
+    template_name = 'notlarim/notlar_list.html'
+    context_object_name = 'notlar'
 
-class NotSil(generic.edit.DeleteView):
+class NotDetayView(DetailView):
     model = Notlar
-    template_name='not_sil.html'
-    success_url=reverse_lazy("notlari_listele") #notlari_listele bi template değil urls patternde tanımlı listview değişkenidir. Bkz.urls.py 6. satır
+    template_name = 'notlarim/not_detay.html'
+    context_object_name = 'not'
 
-class NotDuzenle(generic.edit.UpdateView):
+class NotEkleView(CreateView):
     model = Notlar
-    template_name='not_duzenle.html'
-    fields = ['baslik','icerik']
+    template_name = 'notlarim/not_ekle.html'
+    fields = ['baslik', 'icerik']
+    success_url = reverse_lazy('notlar_list')
+
+    def form_valid(self, form):
+        form.instance.yazar = self.request.user
+        return super().form_valid(form)
+
+class NotGuncelleView(UpdateView):
+    model = Notlar
+    template_name = 'notlarim/not_guncelle.html'
+    fields = ['baslik', 'icerik']
+
+class NotSilView(DeleteView):
+    model = Notlar
+    template_name = 'notlarim/not_sil.html'
+    success_url = reverse_lazy('notlar_list')
+

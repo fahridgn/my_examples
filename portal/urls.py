@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('', include('notlarim.urls')),
     path('', include('users.urls')),
+    path('', include('yorumlar.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
 
 ]

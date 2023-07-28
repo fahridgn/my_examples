@@ -1,0 +1,18 @@
+<!-- templates/yorumlar/yorum_list.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Yorumlar</h1>
+  <ul>
+    {% for yorum in yorumlar %}
+      <li>
+        <strong>{{ yorum.yazar }}</strong>: {{ yorum.icerik }}
+        <!--<a href="{% url 'yorum_guncelle' notlar_id=yorum.notlar.pk yorum_id=yorum.pk %}">Güncelle</a>  Burası düzenlenecek!
+        <a href="{% url 'yorum_sil' notlar_id=yorum.notlar.pk yorum_id=yorum.pk %}">Sil</a>-->
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'yorum_ekle' notlar_id=notlar_id %}">Yorum Ekle</a>
+  <a href="{% url 'not_listesi' %}">Notlar Listesi</a>
+{% endblock %}

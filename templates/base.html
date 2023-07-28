@@ -11,7 +11,7 @@
     <body class="bg-secondary">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark px-5">
             <li class="nav-item">
-                <a class="btn btn-secondary" href="{% url 'notlari_listele'%}">Notlarım</a>
+                <a class="btn btn-secondary" href="{% url 'notlar_list'%}">Notlarım</a>
             </li>
 
             
@@ -20,7 +20,7 @@
                 {% if user.is_authenticated %}
 			    <div class="navbar-nav mx-3">
                     <div class="nav-item">
-                        <a class="btn btn-secondary" href="{% url 'icerik' %}">Not Ekle</a>
+                        <a class="btn btn-secondary" href="{% url 'not_ekle' %}">Not Ekle</a>
                     </div>
 			    </div>
 
@@ -45,6 +45,7 @@
         </nav>
             {% block content %}
             {% endblock %}
+
             <script src="{% static 'js/jquery-min.js' %}"></script>
             <script src = "{% static 'js/bootstrap.min.js' %}"></script>
     </body>
